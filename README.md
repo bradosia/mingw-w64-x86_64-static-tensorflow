@@ -26,6 +26,7 @@ Library:
 pacman -Su
 pacman -Sy base-devel msys2-devel
 pacman -Sy mingw-w64-x86_64-python3 mingw-w64-x86_64-python3-pip mingw-w64-x86_64-python3-numpy mingw-w64-x86_64-python3-scipy mingw-w64-x86_64-python3-matplotlib mingw-w64-x86_64-python3-pandas mingw-w64-x86_64-python3-Pillow
+pacman -Sy mingw-w64-x86_64-cmake mingw-w64-x86_64-python2-numpy mingw-w64-x86_64-python2-protobuf mingw-w64-x86_64-python2-absl-py mingw-w64-x86_64-python2-mock mingw-w64-x86_64-python2-pbr mingw-w64-x86_64-python2-funcsigs mingw-w64-x86_64-python2-wheel mingw-w64-x86_64-python3-protobuf mingw-w64-x86_64-python3-absl-py mingw-w64-x86_64-python3-mock mingw-w64-x86_64-python3-pbr mingw-w64-x86_64-python3-funcsigs mingw-w64-x86_64-python3-wheel mingw-w64-x86_64-swig 
 
 cd /c/source/tensorflow-1.15.0
 ./configure
@@ -45,7 +46,7 @@ bazel build --config=opt --action_env PYTHON_BIN_PATH=/c/mysys64/usr/bin/python.
 bazel build --config=opt PYTHON_BIN_PATH=/mingw64/bin/python.exe //tensorflow/tools/pip_package:build_pip_package 
 bazel build //tensorflow/tools/pip_package:build_pip_package 
 
-bazel build --config=opt --compiler=mingw-gcc --BAZEL_VC="C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC" //tensorflow/tools/pip_package:build_pip_package 
+bazel build --config=opt --cpu=linux --compiler=mingw-gcc //tensorflow/tools/pip_package:build_pip_package 
 cd build
 make
 ```
