@@ -33,11 +33,11 @@ cd /c/source/tensorflow-1.15.0
 /mingw64/bin/python.exe
 /mingw64/lib/python3.8/site-packages
 
-/c/msys2/mingw64/bin/python.exe
-/c/msys2/mingw64/lib/python3.8/site-packages
+/c/msys64/mingw64/bin/python.exe
+/c/msys64/mingw64/lib/python3.8/site-packages
 
-C:/msys2/mingw64/bin/python.exe
-C:/msys2/mingw64/lib/python3.8/site-packages
+C:/msys64/mingw64/bin/python.exe
+C:/msys64/mingw64/lib/python3.8/site-packages
 
 export MSYS_NO_PATHCONV=1
 export MSYS2_ARG_CONV_EXCL="*"
@@ -46,7 +46,7 @@ bazel build --config=opt --action_env PYTHON_BIN_PATH=/c/mysys64/usr/bin/python.
 bazel build --config=opt PYTHON_BIN_PATH=/mingw64/bin/python.exe //tensorflow/tools/pip_package:build_pip_package 
 bazel build //tensorflow/tools/pip_package:build_pip_package 
 
-bazel build --config=opt --cpu=linux --compiler=mingw-gcc //tensorflow/tools/pip_package:build_pip_package 
+bazel build --config=opt --host_force_python=PY3 --compiler=mingw-gcc //tensorflow/tools/pip_package:build_pip_package 
 cd build
 make
 ```
@@ -56,5 +56,15 @@ make
 
 
 
-tensorflow-2.1.0-rc2
-cd /c/source/tensorflow-2.1.0-rc2
+tensorflow-2.1.0-rc1
+```shell
+cd /c/source/tensorflow-2.1.0-rc1
+./configure
+C:/msys64/mingw64/bin/python.exe
+C:/msys64/mingw64/lib/python3.8/site-packages
+```
+press enter for all the options to disable
+```shell
+bazel build --config=opt --cpu=local --compiler=mingw-gcc //tensorflow/tools/pip_package:build_pip_package 
+```
+--config=monolithic
