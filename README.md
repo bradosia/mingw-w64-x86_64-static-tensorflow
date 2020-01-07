@@ -47,6 +47,8 @@ bazel build --config=opt PYTHON_BIN_PATH=/mingw64/bin/python.exe //tensorflow/to
 bazel build //tensorflow/tools/pip_package:build_pip_package 
 
 bazel build --config=opt --host_force_python=PY3 --compiler=mingw-gcc //tensorflow/tools/pip_package:build_pip_package 
+
+bazel build --config=opt --host_force_python=PY3 --compiler=mingw-gcc //tensorflow/pip_package:build_pip_package
 cd build
 make
 ```
